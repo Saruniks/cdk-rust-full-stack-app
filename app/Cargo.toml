@@ -1,0 +1,13 @@
+[workspace]
+
+members = [
+    "crates/codegen/api-client",
+    "crates/codegen/server",
+    "crates/auth0-spa-rust",
+    "crates/db_impl",
+    "crates/db_impl/db_common",
+    "crates/ui-app",
+    "crates/app",
+]
+
+exclude = ["crates/db_impl/db-sync"]

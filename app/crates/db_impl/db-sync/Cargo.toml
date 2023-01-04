@@ -1,0 +1,28 @@
+[workspace]
+
+[package]
+name = "db-sync"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+openssl = "*"
+db_common = { path = "../db_common" }
+# openssl-probe = "0.1.5"
+config = "0.11.0"
+diesel = { version = "2.0.2", features = ["postgres"] }
+diesel_migrations = "2.0.0"
+env_logger = "0.9"
+failure = "0.1.8"
+log = "0.4.14"
+serde = "1.0.130"
+serde_derive = "1.0.130"
+aws-sdk-secretsmanager = "0.21.0"
+aws-config = "0.51.0"
+aws-sdk-ssm = "0.21.0"
+aws-sdk-codepipeline = "0.21.0"
+tokio = { version = "1.17.0", features = ["macros"] }
+serde_json = "1.0"
+lambda_runtime = "0.7.1"

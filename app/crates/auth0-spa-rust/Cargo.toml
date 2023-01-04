@@ -1,0 +1,10 @@
+[package]
+name = "auth0-spa-rust"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+wasm-bindgen = { version="=0.2.74", features = ["serde-serialize"] }
+wasm-bindgen-futures = "=0.4.24"
+js-sys = "0.3.51"
+serde = { version = "1.0", features = ["derive"] }

@@ -1,0 +1,8 @@
+[[proxy]]
+rewrite = "/api/"
+backend = "http://127.0.0.1:8082/api/"
+
+[[hooks]]
+stage = "build"
+command = "sh"
+command_arguments = ["-c", "tailwindcss -c tailwind.config.js -o $TRUNK_STAGING_DIR/tailwind.css"]

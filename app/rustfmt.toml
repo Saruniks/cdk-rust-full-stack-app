@@ -1,0 +1,11 @@
+max_width = 140 #default 100
+newline_style = "Unix" #default Auto
+use_field_init_shorthand = true #default false
+edition = "2018"
+
+# unstable rustfmt flags
+error_on_line_overflow = false #default false
+imports_granularity = "Crate"
+normalize_comments = true #default false
+reorder_impl_items = true #default false
+group_imports = "StdExternalCrate" #default "Preserve"

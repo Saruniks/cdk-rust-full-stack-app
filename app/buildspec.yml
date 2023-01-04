@@ -1,0 +1,29 @@
+version: "0.2"
+
+env:
+  shell: bash
+
+phases:
+  build:
+    commands:
+      - cd app
+      - make generate
+      - cargo build --release
+      - cd ..
+
+  post_build:
+    commands:
+    - mv app/target/release/server-app app/dev-tools/code-deploy/vendenic-server/server
+    - apt-get install zip unzip -y
+    - cd app/dev-tools/code-deploy/vendenic-server
+    - zip backend-code.zip . -r
+artifacts:
+  files:
+    - 'backend-code.zip'
+  base-directory: 'app/dev-tools/code-deploy/vendenic-server'
+
+cache:
+  paths:
+    - root/.cargo/registry/**/* # TODO: Research
+    - 'app/target/**/*' # TODO: Research
+    

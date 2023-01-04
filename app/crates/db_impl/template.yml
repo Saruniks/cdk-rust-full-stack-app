@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Rust embedded migrations
+Resources:
+  MyMigrationLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: bootstrap
+      Runtime: provided
+      MemorySize: 512
+      FunctionName: MyMigrationLambda
+      Policies: 
+      - AmazonSSMFullAccess
+      - SecretsManagerReadWrite
+      - AWSCodePipeline_FullAccess
+      CodeUri: .
+    Metadata:
+      BuildMethod: makefile
+

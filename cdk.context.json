@@ -1,0 +1,60 @@
+{
+  "hosted-zone:account=988317291885:domainName=purecult.link:region=us-east-1": {
+    "Id": "/hostedzone/Z03205442SJW3M5PB58PL",
+    "Name": "purecult.link."
+  },
+  "vpc-provider:account=988317291885:filter.vpc-id=vpc-09cf5b1fce29bed59:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-09cf5b1fce29bed59",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-05d3da06f51efb8fc",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0ac712bc718128c03"
+          },
+          {
+            "subnetId": "subnet-0668c85ae5316d77a",
+            "cidr": "172.31.80.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0ac712bc718128c03"
+          },
+          {
+            "subnetId": "subnet-01011700114b0da46",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-east-1c",
+            "routeTableId": "rtb-0ac712bc718128c03"
+          },
+          {
+            "subnetId": "subnet-0240839855911d85e",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-east-1d",
+            "routeTableId": "rtb-0ac712bc718128c03"
+          },
+          {
+            "subnetId": "subnet-034576459dbaa5803",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "us-east-1e",
+            "routeTableId": "rtb-0ac712bc718128c03"
+          },
+          {
+            "subnetId": "subnet-02261e2ec79595b03",
+            "cidr": "172.31.64.0/20",
+            "availabilityZone": "us-east-1f",
+            "routeTableId": "rtb-0ac712bc718128c03"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=988317291885:filters.image-type.0=machine:filters.name.0=Amazon Linux 2:filters.state.0=available:region=us-east-1": "ami-0e9b6e1d75cba69bf",
+  "hosted-zone:account=988317291885:domainName=purecult.link:region=us-east-2": {
+    "Id": "/hostedzone/Z03205442SJW3M5PB58PL",
+    "Name": "purecult.link."
+  }
+}

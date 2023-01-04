@@ -1,0 +1,27 @@
+version: "0.2"
+
+env:
+  shell: bash
+
+phases:
+  build:
+    commands:
+      - cd app
+      - export TRUNK_BUILD_RELEASE=true
+      - make generate
+      - cd crates/ui-app; trunk build
+      - cd ../.. 
+      - apt-get install zip unzip -y
+      - cd crates/ui-app/dist
+      - mkdir /asset-output
+      - zip /asset-output/frontend-code.zip . -r
+
+artifacts:
+  files:
+    - 'frontend-code.zip'
+  base-directory: '/asset-output'
+
+cache:
+  paths:
+    - $HOME/.cargo/registry/**/*
+    

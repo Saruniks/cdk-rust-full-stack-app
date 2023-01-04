@@ -1,0 +1,26 @@
+[package]
+name = "db_impl"
+version = "0.1.0"
+authors = ["Sarunas Gincas <sarunikss@gmail.com.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+openapi_client = { path = "../codegen/server" }
+db_common = { path = "db_common" }
+aws-config = "0.51.0"
+aws-sdk-ssm = "0.21.0"
+aws-sdk-secretsmanager = "0.21.0"
+diesel = { version = "1.4.8", default-features = false, features = [ "r2d2", "postgres" ] }
+dotenv = "0.15.0"
+anyhow = "1.0.42"
+chrono = { version = "0.4.10", features = ["serde"] }
+bytes = "1.1.0"
+bb8 = "0.7.0"
+bb8-diesel = "0.2.1"
+async-trait = "0.1.24"
+base64 = "0.13.0"
+tokio = { version = "1.17.0", features = ["macros"] }
+serde_json = "1.0"
+ 

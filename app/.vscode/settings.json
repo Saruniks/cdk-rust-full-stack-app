@@ -1,0 +1,48 @@
+{
+  "rust-analyzer.checkOnSave.enable": true,
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.cargo.allFeatures": true,
+  // "rust-analyzer.updates.channel": "nightly",
+  "files.autoSave": "afterDelay",
+  "editor.minimap.enabled": false,
+  "workbench.colorTheme": "Quiet Light",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "explorer.confirmDelete": false,
+  "terminal.integrated.tabs.enabled": true,
+  "emmet.includeLanguages": {
+      "rust": "html",
+  },
+  "[rust]": {
+      "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
+    "tailwindCSS.includeLanguages": {
+      "rust": "html"
+    },
+  // "rust-analyzer.checkOnSave.enable": true,
+  // "rust-analyzer.checkOnSave.extraArgs": [
+  //   "--target-dir",
+  //   "/home/juliuslungys/projects/nuke/frontend/target",
+  // ],
+  // "rust-analyzer.updates.channel": "nightly",
+  // "rust-analyzer.checkOnSave.command": "check",
+  "rust-analyzer.checkOnSave.command": "check",
+  // Vsc other
+  "taskExplorer.pathToMake": "make",
+  "search.exclude": {
+    "**/target": true
+  },
+  "update.mode": "none",
+  "files.associations": {
+    ".env.sample": "dotenv",
+    ".env.reviewci": "dotenv",
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "git.confirmSync": false,
+  "editor.guides.bracketPairs": true,
+  "rust-analyzer.imports.merge.glob": false,
+  "rust-analyzer.imports.granularity.enforce": true,
+  "rust-analyzer.imports.granularity.group": "item",
+  "rust-analyzer.imports.prefix": "crate",
+  "rust-analyzer.procMacro.attributes.enable": true,
+}
+

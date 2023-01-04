@@ -1,0 +1,199 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Sample API
+  description: A sample API
+servers:
+  - url: http://0.0.0.0:{port}
+    variables:
+      port:
+        enum:
+          - '443'
+          - '8082'
+        default: '8082'
+
+# 1) Define the security scheme type (HTTP bearer)
+components:
+  securitySchemes:
+    oAuthSample:            # arbitrary name for the security scheme
+      type: oauth2
+      description: This API uses OAuth 2 with the implicit grant flow.
+      flows:
+        implicit:   # <---- OAuth flow(authorizationCode, implicit, password or clientCredentials)
+          authorizationUrl: https://api.example.com/oauth2/authorize
+          scopes:
+            create:polls: create polls
+            read_pets: read your pets
+            write_pets: modify pets in your account
+  schemas:
+    AuthInfo:
+      type: object
+      properties:
+        auth0_domain:
+          type: string
+        auth0_client_id:
+          type: string
+      required:
+        - auth0_domain
+        - auth0_client_id
+    MemberPair:
+      type: object
+      properties:
+        first_member:
+          $ref: '#/components/schemas/Member'
+        second_member:
+          $ref: '#/components/schemas/Member'
+      required:
+        - first_member
+        - second_member
+    Member:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        file:
+          type: string
+      required:
+        - id
+        - file
+    VotingResult:
+      type: object
+      properties:
+        member_pair:
+          $ref: '#/components/schemas/MemberPair'
+        diff_sum:
+          type: integer
+          format: int64
+      required: 
+        - member_pair
+        - diff_sum
+    VotingResults:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VotingResult'
+        total_pages: 
+          type: integer
+          format: int64
+      required: 
+        - results
+        - total_pages
+
+# 2) Apply the security globally to all operations
+# security:
+  # - oAuthSample: []
+
+paths:
+  /:
+    get:
+      security:
+        - oAuthSample: ["read_pets"]
+      description: Health
+      operationId: getHealth
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+  /api/auth:
+    get:
+      # security:
+        # - oAuthSample: []
+      description: Get auth info
+      operationId: getAuthInfo
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthInfo'
+        '400':
+          description: Invalid request
+  /api/voting/member_pairs:
+    get:
+      security:
+        - oAuthSample: []
+      description: Get member pair
+      operationId: getMemberPair
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberPair'
+        '400':
+          description: Invalid request
+  /api/voting/votes:
+    post:
+      security:
+        - oAuthSample: []
+      description: Post pair vote
+      operationId: postPairVote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object  
+              properties:
+                first_member_id:
+                  type: integer
+                  format: int64
+                second_member_id:
+                  type: integer
+                  format: int64
+                diff:
+                  type: integer
+                  format: int64
+              required:
+                - first_member_id
+                - second_member_id
+                - diff
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Invalid request
+  /api/voting/voting_results:
+    get:
+      security:
+        - oAuthSample: []
+      description: Get voting results
+      operationId: getVotingResults
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+        - in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VotingResults'
+        '400':
+          description: Invalid request
+    post:
+      security:
+        - oAuthSample: []
+      description: Aggregate
+      operationId: postVotingResults
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Invalid request
