@@ -1,5 +1,9 @@
 # Rust Full Stack
 
+## App
+
+![](https://github.com/Saruniks/cdk-rust-full-stack-app/blob/master/vendenic.gif)
+
 ## Diagram
 
 ![Rust Full Stack Diagram](diagram.png)
