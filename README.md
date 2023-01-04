@@ -18,7 +18,7 @@
 * [Diesel](https://diesel.rs/) (PotsgreSQL)
 * `OpenAPI Generator` for Rust server.
 * AWS Lambda for migrations (Rust binary with embedded migrations, built with musl) 
-* [aws-sdk-rust](https://github.com/awslabs/aws-sdk-rust) is used to retrieve database credentials from systems manager and secrets manager 
+* [aws-sdk-rust](https://github.com/awslabs/aws-sdk-rust) for retrieving database credentials from systems manager and secrets manager 
 
 ## CI/CD
 
